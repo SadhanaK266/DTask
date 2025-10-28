@@ -7,7 +7,7 @@ public class Main{
         
         boolean cont=true;
         while(cont){
-            System.out.println("The Available Choices are\n1.Login\n2.Register\n3.Exit\nEnter your Choice : ");
+            System.out.println("The Choices are\n1.Login\n2.Register\n3.Exit\nEnter your Choice : ");
             int ch=sc.nextInt();
             sc.nextLine();
             switch (ch) {

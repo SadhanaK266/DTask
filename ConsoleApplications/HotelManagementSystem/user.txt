@@ -8,3 +8,4 @@ David,David@134,admin
 Ben,ben10,admin,ben10,Non-veg,,ben10, 5th Street, CrossCut road, Pallavaram, Chennai.
 Sid,sid2345,customer,,,,
 sim,sim091,customer,987654321
+Saran,Saran@123,Admin,Royal,Non-veg,12 th Street
