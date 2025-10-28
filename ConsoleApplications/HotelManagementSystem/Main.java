@@ -7,24 +7,22 @@ public class Main{
         
         boolean cont=true;
         while(cont){
-            System.out.println("Enter your Choice\n1.Login\n2.Register\n3.Exit");
+            System.out.println("The Available Choices are\n1.Login\n2.Register\n3.Exit\nEnter your Choice : ");
             int ch=sc.nextInt();
             sc.nextLine();
-            if(ch==1){
-                Authentication.login(sc);
-            }
-            else if(ch==2){
-                Authentication.register(sc);
-            }
-            else if(ch==3){
-                System.out.println("Thank you for visiting!...\nHave a Nice Day!...");
-                sc.close();
-                cont=false;
-            }
-            else{
-                System.out.println("Invalid choice");
-
-            }
+            switch (ch) {
+                case 1:
+                    Authentication.login(sc);
+                    break;
+                case 2:
+                    obj.register(sc);
+                    break;
+                case 3:
+                    System.out.println("Thank you for visiting!...\nHave a Nice Day!...");
+                    sc.close();
+                    cont=false;
+            }           
         }
+        
     }
 }

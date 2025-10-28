@@ -7,8 +7,8 @@ public class Authentication {
 
     // Login - Existing user
     public static void login(Scanner sc) {
-        System.out.println("--------Welcome to the login Page-------- ");
         try{
+            System.out.println("--------Welcome to the login Page-------- ");
             File file = new File(FileName);
             if (!file.exists()) {
                 System.out.println("No records found. Kindly register first.");
@@ -44,8 +44,8 @@ public class Authentication {
 
     // Register new user
     public static void register(Scanner sc) {
-        System.out.println("-------Welcome to the Registration page-------");
         try {
+            System.out.println("-------Welcome to the Registration page-------");
             File file = new File(FileName);
             //Creates file if it doesn't exist
             file.createNewFile(); 
@@ -56,17 +56,40 @@ public class Authentication {
                 System.out.println("User already exists. Please login instead.");
                 return;
             }
+            String HName="";
+            String HType="";
+            String HAddress="";
             System.out.print("Enter password: ");
             String password = sc.nextLine();
             System.out.print("Enter role (Admin/Customer): ");
             String role = sc.nextLine();
-
             // Save to file
             FileWriter fw = new FileWriter(FileName, true);//true ==append mode ; false==overwrites 
-            fw.write(username + "," + password + "," + role + "\n");
-            fw.close();
 
-            System.out.println("Registration successful!");
+            if(role.equalsIgnoreCase("Admin")){
+                System.out.println("Hello "+role +"!... Kindly enter the few more details as follows :");
+                System.out.print("Enter your Hotel Name : ");
+                HName=sc.nextLine();
+                System.out.print("Enter whether your Hotel is Veg/Non-veg :");
+                HType=sc.nextLine();
+                System.out.print("Enter the address of your Hotel :");
+                HAddress=sc.nextLine();
+                
+                fw.write(username + "," + password + "," + role +"," + HName + "," + HType + "," +
+                ","+ HAddress + "\n");
+                
+            }
+            else{
+                System.out.println("Welcome "+role+"!... Kindly enter the details below :");
+                System.out.print("Enter your phone Number : ");
+                int PhNumber=sc.nextInt();
+                sc.nextLine();
+                fw.write(username + "," + password + "," + role +"," + PhNumber+"\n");
+                
+            }
+            fw.close();
+            System.out.println("Registration Successful!...\n");
+            
         }
         catch (IOException e){
             System.out.println(e+" Error while registering user.");
