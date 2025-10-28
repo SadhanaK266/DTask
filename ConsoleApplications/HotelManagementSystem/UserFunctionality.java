@@ -11,18 +11,23 @@ public class UserFunctionality{
             System.out.print("Your options are :\n1.Add food\n2.Remove food\n3.View Hotel Menu\n4.Exit\nEnter your choice : ");
             int ch=sc.nextInt();
             sc.nextLine();
-            System.out.print("Enter the name of the food : ");
-            String FName=sc.nextLine();
-            System.out.print("Enter the "+FName+"'s quantity : ");
-            int FQuantity=sc.nextInt();
+            
             switch(ch){
                 case 1:
                     System.out.println("-------Add Food Module-------");
-                    addFood(username, FName, FQuantity);
+                    System.out.print("Enter the name of the food : ");
+                    String FNameAdd=sc.nextLine();
+                    System.out.print("Enter the "+FNameAdd+"'s quantity : ");
+                    int FQuantityAdd=sc.nextInt();
+                    addFood(username, FNameAdd, FQuantityAdd);
                     break;
                 case 2:
                     System.out.print("------Remove Food Module------");
-                    removeFood(username,FName,FQuantity);
+                    System.out.print("Enter the name of the food : ");
+                    String FNameRem=sc.nextLine();
+                    System.out.print("Enter the "+FNameRem+"'s quantity to be removed : ");
+                    int FQuantityRem=sc.nextInt();
+                    removeFood(username,FNameRem,FQuantityRem);
                     break;
                 case 3:
                     System.out.println("-----View Hotel Menu module------");
@@ -92,7 +97,7 @@ public class UserFunctionality{
 
 
     //---------------CUstomer Module-----------------
-    public static void customer(Scanner sc,String username){
+    public static void customer(Scanner sc){
         System.out.println("--------WELCOME TO THE CUSTOMER MODULE-------");
         boolean cont=true;
         while(cont){
@@ -103,9 +108,13 @@ public class UserFunctionality{
                 case 1:
                     System.out.println("Here you have the available hotels ");
                     viewHotels();
+                    break;
                 case 2:
+                    System.out.print("Enter the hotel name : ");
+                    String HotelName=sc.nextLine();
                     System.out.println("List of Food Items Available ");
-                    viewHotelMenu(username);
+                    viewHotelMenu(HotelName);//same as the admin module
+                    break;
                 case 3:
                     cont=false;
                     break;
@@ -123,10 +132,10 @@ public class UserFunctionality{
             }
             Scanner fileScan=new Scanner(file);
             System.out.println("Available Hotels are : ");
+            int i=1;
             while(fileScan.hasNextLine()){
                 String[] parts=fileScan.nextLine().split(",");
                 if(parts.length>=6 && parts[2].equalsIgnoreCase("Admin")){
-                    int i=1;
                     String Hotelname=parts[3];
                     System.out.println(i++ +Hotelname+" ("+parts[0]+")");
                 }

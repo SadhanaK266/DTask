@@ -24,10 +24,17 @@ public class Authentication {
             boolean found = false;
             while(fileSc.hasNextLine()){
                 String[] parts = fileSc.nextLine().split(",");
-                if(parts.length == 3 && parts[0].equals(username) && parts[1].equals(password)) {
+                if(parts.length >= 3 && parts[0].equals(username) && parts[1].equals(password)) {
                     found = true;
+                    String role=parts[2];
                     System.out.println("Login successful!");
-                    System.out.println("Welcome " + username + " (" + parts[2] + ")");
+                    System.out.println("Welcome " + username + " (" + role + ")");
+                    if(role.equalsIgnoreCase("admin")){
+                        UserFunctionality.admin(sc, username);
+                    }
+                    else if(role.equalsIgnoreCase("Customer")){
+                        UserFunctionality.customer(sc);
+                    }
                     break;
                 }
             }
@@ -76,7 +83,7 @@ public class Authentication {
                 HAddress=sc.nextLine();
                 
                 fw.write(username + "," + password + "," + role +"," + HName + "," + HType + "," +
-                ","+ HAddress + "\n");
+                HAddress + "\n");
                 
             }
             else{
