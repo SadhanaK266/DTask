@@ -1,5 +1,5 @@
-import java.util.*;
 import java.io.*;
+import java.util.*;
 public class UserFunctionality{
 
     private  static final String FileName="user.txt";
@@ -96,7 +96,7 @@ public class UserFunctionality{
 
 
 
-    //---------------CUstomer Module-----------------
+    //----------------------CUstomer Module--------------------------
     public static void customer(Scanner sc){
         System.out.println("--------WELCOME TO THE CUSTOMER MODULE-------");
         boolean cont=true;
@@ -123,6 +123,7 @@ public class UserFunctionality{
             }
         }
     }
+    //view Hotel
     public static void viewHotels(){
         try {
             File file=new File(FileName);
@@ -137,12 +138,12 @@ public class UserFunctionality{
                 String[] parts=fileScan.nextLine().split(",");
                 if(parts.length>=6 && parts[2].equalsIgnoreCase("Admin")){
                     String Hotelname=parts[3];
-                    System.out.println(i++ +Hotelname+" ("+parts[0]+")");
+                    System.out.println(i++ +Hotelname+" ("+parts[0]+")");//Hotel name And it's owner name
                 }
             }
             fileScan.close();
         }
-        catch (Exception e) {
+        catch (IOException e) {
             System.out.println(e.getMessage()+" occured");
         }
     }
